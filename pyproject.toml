@@ -1,0 +1,41 @@
+[tool.black]
+# 公式ドキュメント
+# https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format
+
+# ライン行数はデフォルトから変更する場合はコメントアウト
+# line-length = 88
+
+# デフォルトに追加したいフォーマット対象外指定ファイルやディレクトリ
+extend-exclude = '''
+(
+      \.git
+    | migrations/  # 自動生成されたDB migrationファイル
+)
+'''
+
+
+[tool.isort]
+# blackと共存して使う設定
+# https://pycqa.github.io/isort/docs/configuration/black_compatibility.html
+profile = "black"
+
+# .gitignoreファイルで指定されているファイルを除外
+skip_gitignore = true
+
+# デフォルトに追加したいフォーマット対象外指定ファイルやディレクトリ
+extend_skip_glob = ["**/migrations/*"]  # 自動生成されたDB migrationファイル
+
+
+[tool.mypy]
+# https://mypy.readthedocs.io/en/stable/config_file.html#example-pyproject-toml
+
+# strictモードを有効化
+strict = true
+
+# プラグイン設定
+# plugins = ["mypy_django_plugin.main"]
+
+# mypyのDjangoプラグインの設定
+# [tool.django-stubs]
+# https://github.com/typeddjango/django-stubs
+# django_settings_module = "mysite.settings"
