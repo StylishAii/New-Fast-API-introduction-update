@@ -1,3 +1,28 @@
+[tool.poetry]
+name = "fast-api-introduction"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "fast_api_introduction"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.85.1"
+uvicorn = {extras = ["standard"], version = "^0.19.0"}
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+isort = "^5.10.1"
+flake8 = "^5.0.4"
+mypy = "^0.982"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
 [tool.black]
 # 公式ドキュメント
 # https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format
