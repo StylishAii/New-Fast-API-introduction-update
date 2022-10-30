@@ -4,6 +4,8 @@ services:
     build: ./
     ports:
       - 8000:8000
+    volumes:
+      - ./api:/src/api
   db:
     image: mysql:8.0
     environment:
