@@ -18,7 +18,7 @@ class TaskCreateResponse(TaskCreate):
         orm_mode = True
 
 
-class Task(BaseModel):
+class Task(TaskBase):
     id: int
     done: bool = Field(False, description="完了フラグ")
 
