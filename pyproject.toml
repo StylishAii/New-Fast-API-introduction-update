@@ -10,7 +10,7 @@ packages = [{include = "fast_api_introduction"}]
 python = "^3.11"
 fastapi = "^0.85.1"
 uvicorn = {extras = ["standard"], version = "^0.19.0"}
-sqlalchemy = "^1.4.42"
+sqlalchemy = {extras = ["mypy"], version = "^1.4.42"}
 aiomysql = "^0.1.1"
 
 
@@ -63,7 +63,7 @@ extend_skip_glob = ["**/migrations/*"]  # 自動生成されたDB migrationフ�
 strict = true
 
 # プラグイン設定
-# plugins = ["mypy_django_plugin.main"]
+plugins = ["sqlalchemy.ext.mypy.plugin"]
 
 # mypyのDjangoプラグインの設定
 # [tool.django-stubs]
