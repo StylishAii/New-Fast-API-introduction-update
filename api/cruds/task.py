@@ -37,11 +37,12 @@ async def get_task(db: AsyncSession, task_id: int) -> None | task_model.Task:
     result: Result = await db.execute(
         select(task_model.Task).filter(task_model.Task.id == task_id)
     )
-    task: None | task_model.Task = result.first()
-    if task is not None:
-        # 要素が一つであってもtupleで返却されるので１つ目の要素を取り出す
-        return task[0]  # type: ignore
-    return None
+    first = result.first()
+    if first is None:
+        return None
+
+    # 要素が一つであってもtupleで返却されるので１つ目の要素を取り出す
+    return first[0]  # type: ignore
 
 
 async def update_task(
@@ -51,7 +52,7 @@ async def update_task(
     db.add(original)
     await db.commit()
     await db.refresh(original)
-    return original
+    return task_schema.TaskCreateResponse(id=original.id, title=original.title)
 
 
 async def delete_task(db: AsyncSession, original: task_model.Task) -> None:

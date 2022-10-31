@@ -16,7 +16,8 @@ async def mark_task_as_done(
     if done is not None:
         raise HTTPException(status_code=400, detail="Done already exists")
 
-    return await done_crud.create_done(db, task_id)
+    done_model = await done_crud.create_done(db, task_id)
+    return done_schema.DoneResponse(id=done_model.id)
 
 
 @router.delete("/tasks/{task_id}/done", response_model=None)

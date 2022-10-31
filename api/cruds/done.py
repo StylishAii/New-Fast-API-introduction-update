@@ -9,11 +9,12 @@ async def get_done(db: AsyncSession, task_id: int) -> None | task_model.Done:
     result: Result = await db.execute(
         select(task_model.Done).filter(task_model.Done.id == task_id)
     )
-    done: None | tuple[task_model.Done] = result.first()
-    if done is None:
+    first = result.first()
+    if first is None:
         return None
+
     # 要素が一つであってもtupleで返却されるので１つ目の要素を取り出す
-    return done[0]
+    return first[0]  # type: ignore
 
 
 async def create_done(db: AsyncSession, task_id: int) -> task_model.Done:
