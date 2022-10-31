@@ -5,7 +5,8 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./api:/src/api
+      - ./api:/src/api:rw
+      - ./tests:/src/tests:rw
   db:
     image: mysql:8.0
     environment:
