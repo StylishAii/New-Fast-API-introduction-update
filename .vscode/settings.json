@@ -14,7 +14,19 @@
     "python.linting.flake8Enabled": true,
     "python.linting.mypyEnabled": true,
     "cSpell.words": [
+        "aiomysql",
+        "aiosqlite",
+        "autoflush",
+        "dones",
         "fastapi",
+        "httpx",
+        "isnot",
+        "outerjoin",
+        "pydantic",
+        "pymysql",
+        "sessionmaker",
+        "sqlalchemy",
+        "starlette",
         "unmark"
     ]
 }
